@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Ringbearer';
+    src: url(./Ringbearer.woff) format("woff"),
+    url(./Ringbearer.woff2) format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'Montserrat';
+    src: url(./Montserrat-Bold.woff) format("woff"),
+    url(./Montserrat-Bold.woff2) format("woff2");
+    font-weight: 700;
+    font-style: normal;
+} */
