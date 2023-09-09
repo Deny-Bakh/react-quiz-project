@@ -39,18 +39,12 @@ export const BackgroundColor = styled.div`
 export const Name = styled.h3`
   font-size: 1.5rem;
   margin-top: 10px;
-//   text-overflow: ellipsis;
-//   overflow: hidden;
-//   white-space: nowrap;
   max-width: 100%;
 `;
 
 export const Description = styled.p`
   margin-top: 10px;
   font-size: 1rem;
-//   text-overflow: ellipsis;
-//   overflow: hidden;
-//   white-space: nowrap;
   max-width: 100%;
 `;
 

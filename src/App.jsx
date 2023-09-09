@@ -5,17 +5,6 @@ import Header from './components/Header/Header';
 import Main from './components/Main/ Main';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
-// import { Quizes } from './pages/quizes';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Header />
-//       <Main />
-//       <Footer />
-//     </div>
-//   );
-// }
 
 function Dashboard() {
   return (

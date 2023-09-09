@@ -31,7 +31,9 @@ export default function QuizModal({ quiz, onClose }) {
           <Description>{quiz.description}</Description>
         </BackgroundColor>
         <Flex>
-          <StartButton type="button" onClick={handleStartQuizClick}>Start Quiz</StartButton>
+          <StartButton type="button" onClick={handleStartQuizClick}>
+            Start Quiz
+          </StartButton>
         </Flex>
       </ModalContent>
     </ModalWrapper>
