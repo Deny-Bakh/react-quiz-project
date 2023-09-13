@@ -19,17 +19,36 @@
 
 // export default Home;
 
-import React from 'react';
-import Card from '../../components/HomeCard/HomeCard';
-import styles from './Home.module.css';
+// import React from 'react';
+// import HomeCard from '../../components/HomeCard/HomeCard';
+// import styles from './Home.module.css';
+
+// function Home() {
+//   return (
+//     <div className={styles.container}>
+//       <div className={styles.cardContainer}>
+//         <HomeCard title="Choose Quiz" to="/select" />
+//         <HomeCard title="Create Quiz" />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Home;
+
+import React from "react";
+import HomeCard from "../../components/HomeCard/HomeCard";
+import styles from "./Home.module.css";
 
 function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer}>
-        <Card title="Choose Quiz" to="/select" />
-        <Card title="Create Quiz" />
+        <HomeCard title="Choose Quiz" to="/select" />
+        <HomeCard title="Create Quiz" />
       </div>
     </div>
   );
 }
+
+export default Home;

@@ -12,6 +12,10 @@ html, body {
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   height: 100vh;
   display: flex;
