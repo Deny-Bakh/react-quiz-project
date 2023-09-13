@@ -41,6 +41,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home"
 import Main from "./components/Main/ Main";
 import Footer from "./components/Footer/Footer";
+import QuizPage from "./pages/QuizPage/QuizPage";
 
 function Dashboard() {
   return (
@@ -59,6 +60,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about-us" element={<>Buy</>} />
         <Route path="/select" element={<Main />} />
+        <Route path="/quiz/:id" element={<QuizPage />} />
       </Route>
     </Routes>
   );
