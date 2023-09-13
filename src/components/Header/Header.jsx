@@ -36,7 +36,7 @@ function Header() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-          <Logo src={LogoImg}></Logo>
+          <Logo src={LogoImg} />
           <MainName>Fantasy-Quiz</MainName>
         </RightContainer>
       </NavbarInnerContainer>
