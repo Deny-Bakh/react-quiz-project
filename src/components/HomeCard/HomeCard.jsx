@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./HomeCard.module.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './HomeCard.module.css';
 
 function HomeCard({ title, to }) {
   return (

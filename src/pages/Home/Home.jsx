@@ -36,9 +36,9 @@
 
 // export default Home;
 
-import React from "react";
-import HomeCard from "../../components/HomeCard/HomeCard";
-import styles from "./Home.module.css";
+import React from 'react';
+import HomeCard from '../../components/HomeCard/HomeCard';
+import styles from './Home.module.css';
 
 function Home() {
   return (

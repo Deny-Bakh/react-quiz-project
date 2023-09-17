@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const NavbarContainer = styled.nav`
   width: 100%;
-  height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
+  height: ${(props) => (props.extendNavbar ? '100vh' : '80px')};
   background: linear-gradient(to bottom, rgba(139, 69, 19, 1), transparent);
   display: flex;
   flex-direction: column;
@@ -96,3 +96,26 @@ export const NavbarExtendedContainer = styled.div`
   }
 `;
 
+export const SearchBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+`;
+
+export const SearchInput = styled.input`
+  font-family: 'Ringbearer';
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 5px;
+`;
+
+export const SearchButton = styled.button`
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'Ringbearer';
+`;

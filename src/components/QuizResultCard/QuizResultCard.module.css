@@ -1,0 +1,44 @@
+.card {
+    border: 2px solid #333;
+    padding: 16px;
+    margin: 16px;
+    background-image: url("../../assets/images/lotrquiz.png");
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover; /* Scales the image to cover the entire container */
+    background-position: center;
+}
+
+  /* .question {
+    color: black;
+  } */
+  
+.option {
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+}
+
+  
+
+ul, li {
+    list-style: none;
+}
+
+.button {
+    font-family: 'Ringbearer';
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #000000;
+    color: #ffff;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.1);
+  }
+  
+  .button:active {
+    transform: scale(0.9);
+  }

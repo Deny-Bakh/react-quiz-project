@@ -10,17 +10,16 @@ import {
   StartButton,
   Flex,
   CloseButton,
-} from "./styled";
+} from './styled';
 
 export default function QuizModal({ quiz, onClose }) {
+  function handleStartQuizClick() {
+    onClose();
+    setTimeout(() => {
+      StartQuiz();
+    }, 300);
+  }
 
-    function handleStartQuizClick() {
-        onClose();
-        setTimeout(() => {
-            StartQuiz();
-          }, 300);
-      }
-    
   return (
     <ModalWrapper>
       <ModalContent>
@@ -39,4 +38,3 @@ export default function QuizModal({ quiz, onClose }) {
     </ModalWrapper>
   );
 }
-

@@ -21,4 +21,3 @@ export const Flex = styled.div`
 export const Logo = styled.img`
   width: 30px;
 `;
-  

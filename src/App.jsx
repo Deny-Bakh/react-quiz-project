@@ -33,38 +33,72 @@
 
 // export default App;
 
-import React from "react";
-import "./assets/fonts/Font.css";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home"
-import Main from "./components/Main/ Main";
-import Footer from "./components/Footer/Footer";
-import QuizPage from "./pages/QuizPage/QuizPage";
-import QuizQuestion from "./components/QuizQuestion/QuizQuestion";
-import QuizSelection from "./components/QuizSelection/QuizSelection";
+// import React from 'react';
+// import './assets/fonts/Font.css';
+// import './App.css';
+// import {
+//   BrowserRouter as Router, Routes, Route, Outlet,
+// } from 'react-router-dom';
+// import Header from './components/Header/Header';
+// import Home from './pages/Home/Home';
+// import Main from './components/Main/ Main';
+// import Footer from './components/Footer/Footer';
+// import QuizPage from './pages/QuizPage/QuizPage';
+// import { Quizes } from './pages/quizes';
+// // import QuizQuestion from "./components/QuizQuestion/QuizQuestion";
+// // import QuizSelection from "./components/QuizSelection/QuizSelection";
 
-function Dashboard() {
-  return (
-    <div className="container">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
-  );
-}
+// function Dashboard() {
+//   return (
+//     <div className="container">
+//       <Header />
+//       <Outlet />
+//       <Footer />
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <Routes>
+//       <Route path="/" element={<Dashboard />}>
+//         <Route path="/quiz/:searchQuery?" element={<Quizes />} />
+//         <Route path="/" element={<Home />} />
+//         <Route path="about-us" element={<>Buy</>} />
+//         <Route path="/select" element={<Main />} />
+//         <Route path="/quiz" element={<QuizPage />} />
+//       </Route>
+//     </Routes>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+import './assets/fonts/Font.css';
+import './App.css';
+import {
+  Routes, Route,
+} from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Main from './components/Main/ Main';
+import QuizPage from './pages/QuizPage/QuizPage';
+import { Quizes } from './pages/quizes';
+import Dashboard from './components/Dashboard/Dashboard';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Dashboard />}>
-        <Route path="/" element={<Home />} />
-        <Route path="about-us" element={<>Buy</>} />
-        <Route path="/select" element={<Main />} />
-        <Route path="/quiz" element={<QuizPage />} />
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Dashboard />}>
+          <Route path="/*" element={<NotFound />} />
+          <Route path="quiz/:searchQuery?" element={<Quizes />} />
+          <Route path="about-us" element={<>Buy</>} />
+          <Route path="select" element={<Main />} />
+          <Route path="/quiz-page/:quizName" element={<QuizPage />} />
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
   );
 }
 

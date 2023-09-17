@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactLogo from '../../assets/images/logo.svg';
-import { ContainerFooter, WrapperFooter, Flex, Logo } from './styled';
+import {
+  ContainerFooter, WrapperFooter, Flex, Logo,
+} from './styled';
 
 function Footer() {
   return (
