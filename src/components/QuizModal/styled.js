@@ -26,6 +26,10 @@ export const ModalWrapper = styled.div`
   z-index: 1000;
 `;
 
+export const QuizTime = styled.h2`
+  color: #333;
+`;
+
 export const QuizImage = styled.img`
   max-width: 100%;
   border-radius: 8px;

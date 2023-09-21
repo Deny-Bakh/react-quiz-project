@@ -93,7 +93,8 @@ function App() {
         <Route path="/" element={<Dashboard />}>
           <Route path="/*" element={<NotFound />} />
           <Route path="quiz/:searchQuery?" element={<Quizes />} />
-          <Route path="about-us" element={<>Buy</>} />
+          <Route path="/favorite" element={<>Buy</>} />
+          <Route path="/create" element={<>Sell</>} />
           <Route path="select" element={<Main />} />
           <Route path="/quiz-page/:quizName" element={<QuizPage />} />
           <Route path="/" element={<Home />} />
