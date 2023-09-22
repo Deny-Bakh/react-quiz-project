@@ -64,7 +64,7 @@ function QuizResultCard({ correctAnswers, totalQuestions, quizStartTime }) {
     );
 
     const minutes = Math.floor(completionTimeInSeconds / 60);
-    const seconds = completionTimeInSeconds % 60;
+    const seconds = (completionTimeInSeconds % 60) + (completionTimeInSeconds < 60 ? 1 : 0);
 
     return `${minutes} min ${seconds} sec`;
   };

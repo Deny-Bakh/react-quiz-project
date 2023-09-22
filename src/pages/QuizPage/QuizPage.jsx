@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import QuizResultCard from '../../components/QuizResultCard/QuizResultCard';
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
-import TimeoutMessage from '../../components/Timeout/TimeoutMessage';
+import TimeoutMessage from '../../components/TimeoutMessage/TimeoutMessage';
 import { quizApi } from '../../api/quizApi/quizApi';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
