@@ -1,7 +1,7 @@
 import React from 'react';
 import { SpinnerContainer, Spinner } from './styled';
 
-function LoadingSpinner() {
+export default function LoadingSpinner() {
   return (
     <SpinnerContainer>
       <Spinner></Spinner>
@@ -9,4 +9,4 @@ function LoadingSpinner() {
   );
 }
 
-export default LoadingSpinner;
+// export default LoadingSpinner;
