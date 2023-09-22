@@ -64,7 +64,7 @@ function QuizResultCard({ correctAnswers, totalQuestions, quizStartTime }) {
     );
 
     const minutes = Math.floor(completionTimeInSeconds / 60);
-    const seconds = (completionTimeInSeconds % 60) + (completionTimeInSeconds < 60 ? 1 : 0);
+    const seconds = completionTimeInSeconds % 60;
 
     return `${minutes} min ${seconds} sec`;
   };
@@ -78,7 +78,7 @@ function QuizResultCard({ correctAnswers, totalQuestions, quizStartTime }) {
             </p>
             <p className={styles.card_text}>
                 Quiz completed in {calculateQuizCompletionTime(quizStartTime)}
-            </p>
+                </p>
             <Link to='/'>
                 <button className={styles.button}>Home</button>
             </Link>
