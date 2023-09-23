@@ -9,7 +9,7 @@ function QuizPage() {
   const [error, setError] = useState('');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const quizDuration = 3;
+  const quizDuration = 180;
   const [timeLeft, setTimeLeft] = useState(quizDuration);
   const [quizStartTime, setQuizStartTime] = useState(null);
   const { quizName } = useParams();
