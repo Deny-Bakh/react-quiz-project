@@ -9,7 +9,7 @@
     border: 2px solid #333;
     padding: 16px;
     margin: 16px;
-    background-image: url("../../assets/images/lotrquiz.png");
+    background-image: url("../../assets/images/quiz_complete_3.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -22,6 +22,16 @@
     border-radius: 15px;
     margin: 0 auto;
     padding: 0 16px;
+}
+
+.wrapper {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+    max-width: 500px;
+    width: 100%;
 }
 
 .card_name {
