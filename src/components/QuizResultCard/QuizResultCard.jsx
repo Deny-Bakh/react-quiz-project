@@ -5,13 +5,13 @@ import styles from './QuizResultCard.module.css';
 function QuizResultCard() {
   const { state } = useLocation();
   const {
-    correctAnswers, totalQuestions, quizStartTime, timeLeft, quizDuration,
+    correctAnswers, totalQuestions, quizStartTime, timeLeft, DEFAULT_QUIZ_DURATION,
   } = state || {};
 
   const calculateQuizCompletionTime = (quizStartTime, timeLeft) => {
     if (!quizStartTime || timeLeft === undefined) return '';
 
-    const quizEndTime = quizStartTime + (quizDuration - timeLeft) * 1000;
+    const quizEndTime = quizStartTime + (DEFAULT_QUIZ_DURATION - timeLeft) * 1000;
     const completionTimeInSeconds = Math.floor((quizEndTime - quizStartTime) / 1000);
 
     const minutes = Math.floor(completionTimeInSeconds / 60);

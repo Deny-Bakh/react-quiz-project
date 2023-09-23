@@ -4,13 +4,14 @@ import QuestionCard from '../../components/QuestionCard/QuestionCard';
 import { quizApi } from '../../api/quizApi/quizApi';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
+const DEFAULT_QUIZ_DURATION = 180;
+
 function QuizPage() {
   const [questions, setQuestions] = useState([]);
   const [error, setError] = useState('');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const quizDuration = 180;
-  const [timeLeft, setTimeLeft] = useState(quizDuration);
+  const [timeLeft, setTimeLeft] = useState(DEFAULT_QUIZ_DURATION);
   const [quizStartTime, setQuizStartTime] = useState(null);
   const { quizName } = useParams();
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function QuizPage() {
           totalQuestions: questions.length,
           quizStartTime,
           timeLeft,
-          quizDuration,
+          DEFAULT_QUIZ_DURATION,
         },
       });
     }
