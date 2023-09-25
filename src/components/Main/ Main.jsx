@@ -1,8 +1,8 @@
 import React from 'react';
-import { Quizes } from "../../pages/quizes";
+import { Quizes } from '../../pages/quizes';
 
 function Main() {
-    return (
+  return (
       <main>
         <div className="main_container">
           <div className="main_wrapper">
@@ -10,7 +10,7 @@ function Main() {
           </div>
         </div>
       </main>
-    );
-  }
-  
-  export default Main;
+  );
+}
+
+export default Main;

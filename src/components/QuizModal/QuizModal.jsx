@@ -1,26 +1,19 @@
 import React from 'react';
-import StartQuiz from '../StartQuiz/StartQuiz';
+import { Link } from 'react-router-dom';
 import {
   ModalWrapper,
   ModalContent,
   QuizImage,
+  QuizTime,
   BackgroundColor,
   Name,
   Description,
   StartButton,
   Flex,
   CloseButton,
-} from "./styled";
+} from './styled';
 
 export default function QuizModal({ quiz, onClose }) {
-
-    function handleStartQuizClick() {
-        onClose();
-        setTimeout(() => {
-            StartQuiz();
-          }, 300);
-      }
-    
   return (
     <ModalWrapper>
       <ModalContent>
@@ -29,14 +22,14 @@ export default function QuizModal({ quiz, onClose }) {
         <BackgroundColor>
           <Name>{quiz.quiz}</Name>
           <Description>{quiz.description}</Description>
+          <QuizTime>3 Minutes To Complete The Quiz</QuizTime>
         </BackgroundColor>
         <Flex>
-          <StartButton type="button" onClick={handleStartQuizClick}>
-            Start Quiz
-          </StartButton>
+          <Link to={`/quiz-page/${quiz.quizUniqueName}`}>
+            <StartButton type="button">Start Quiz</StartButton>
+          </Link>
         </Flex>
       </ModalContent>
     </ModalWrapper>
   );
 }
-

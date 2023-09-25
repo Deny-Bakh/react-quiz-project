@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ContainerFooter = styled.div`
   height: 60px;
@@ -21,4 +22,7 @@ export const Flex = styled.div`
 export const Logo = styled.img`
   width: 30px;
 `;
-  
+
+export const CustomLink = styled(Link)`
+  color: #ffffff;
+`;

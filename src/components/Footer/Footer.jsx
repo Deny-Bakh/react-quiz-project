@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactLogo from '../../assets/images/logo.svg';
-import { ContainerFooter, WrapperFooter, Flex, Logo } from './styled';
+import {
+  ContainerFooter, WrapperFooter, Flex, Logo, CustomLink,
+} from './styled';
 
 function Footer() {
+  const linkedInURL = 'https://www.linkedin.com/in/denys-bakhmachuk/';
+
   return (
       <ContainerFooter>
         <WrapperFooter>
@@ -10,7 +14,9 @@ function Footer() {
           <Logo src={ReactLogo} alt="logo" />
             <p>Fantasy-Quiz</p>
           </Flex>
-            <p>Play With Us</p>
+          <CustomLink to={linkedInURL} target="_blank" rel="noopener noreferrer">
+            <p>Who Are We?</p>
+          </CustomLink>
         </WrapperFooter>
       </ContainerFooter>
   );

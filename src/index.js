@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import {
+  BrowserRouter,
+} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 // import router from './route';
-import {
-  RouterProvider,
-  BrowserRouter
-} from "react-router-dom";
-
-
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -18,15 +15,13 @@ import {
 //   </React.StrictMode>
 // );
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
-
-
 
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
