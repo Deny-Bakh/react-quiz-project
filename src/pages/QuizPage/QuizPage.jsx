@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import QuestionCard from '../../components/QuestionCard/QuestionCard';
 import { quizApi } from '../../api/quizApi/quizApi';
@@ -38,25 +38,25 @@ function QuizPage() {
     }
   };
 
-  useEffect(() => {
-    const fetchChosenQuiz = async () => {
-      try {
-        const response = await quizApi.get(quizName);
+  const fetchChosenQuiz = useCallback(async () => {
+    try {
+      const response = await quizApi.get(quizName);
 
-        const filteredQuestions = response.filter(
-          (question) => question.chozenQuiz === quizName,
-        );
+      const filteredQuestions = response.filter(
+        (question) => question.chozenQuiz === quizName,
+      );
 
-        setQuestions(filteredQuestions);
-        setQuizStartTime(Date.now());
-      } catch (err) {
-        console.error(err);
-        setError(err.message || 'An error occurred while fetching questions.');
-      }
-    };
-
-    fetchChosenQuiz();
+      setQuestions(filteredQuestions);
+      setQuizStartTime(Date.now());
+    } catch (err) {
+      console.error(err);
+      setError(err.message || 'An error occurred while fetching questions.');
+    }
   }, [quizName]);
+
+  useEffect(() => {
+    fetchChosenQuiz();
+  }, [fetchChosenQuiz]);
 
   useEffect(() => {
     const timer = setInterval(() => {

@@ -66,8 +66,8 @@ ul, li {
 
 .button:hover {
     transform: scale(1.1);
-  }
+}
   
-  .button:active {
+.button:active {
     transform: scale(0.9);
-  }
+}
