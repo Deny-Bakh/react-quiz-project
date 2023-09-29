@@ -1,28 +1,34 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback, useEffect, useState, useMemo,
+} from 'react';
 import { useParams } from 'react-router-dom';
-import { quizes } from '../../api/quizes/quizes';
+import { useDispatch, useSelector } from 'react-redux';
 import { CardContainer } from './styled';
 import QuizCard from '../../components/Cards/QuizCard';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './Quizes.module.css';
+import thunks from '../../store/quizes/thunks';
 
 function Quizes() {
-  const [quizzes, setQuizzes] = useState([]);
+  const { quizes: reduxQuizes, filteredQuizes, filter } = useSelector((state) => state.quizesReducer);
+  const dispatch = useDispatch();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const { searchQuery } = useParams();
 
+  const quizesList = useMemo(() => (filter ? filteredQuizes : reduxQuizes), [reduxQuizes, filter, filteredQuizes]);
+
   const fetchQuizList = useCallback(async () => {
+    setLoading(true);
+
     try {
-      const response = await quizes.get();
-      setQuizzes(response);
-      setLoading(false);
+      await dispatch(thunks.fetchQuizes());
     } catch (err) {
-      console.log(err);
-      setError(err.message || 'An error occurred while fetching quizzes.');
+      setError(err);
+    } finally {
       setLoading(false);
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     fetchQuizList();
@@ -30,27 +36,18 @@ function Quizes() {
 
   const isSearchQueryValid = searchQuery && searchQuery.trim() !== '';
 
-  let filteredQuizzes = [];
-
-  if (!loading && Array.isArray(quizzes)) {
-    try {
-      filteredQuizzes = isSearchQueryValid
-        ? quizzes.filter((quiz) => quiz.quiz.toLowerCase().includes(searchQuery.toLowerCase()))
-        : quizzes;
-    } catch (filterError) {
-      console.error('Error while filtering quizzes:', filterError);
-    }
-  }
-
   let contentToRender;
 
   if (loading) {
     contentToRender = <LoadingSpinner />;
-  } else if (filteredQuizzes.length === 0 && isSearchQueryValid) {
-    contentToRender = <p className={styles['message-card']}>
-      No matching elements found for &quot;{searchQuery}&quot;</p>;
+  } else if (quizesList.length === 0 && isSearchQueryValid) {
+    contentToRender = (
+      <p className={styles['message-card']}>
+        No matching elements found for &quot;{searchQuery}&quot;
+      </p>
+    );
   } else {
-    contentToRender = filteredQuizzes.map((quiz) => (
+    contentToRender = quizesList.map((quiz) => (
       <QuizCard key={quiz.id} quiz={quiz} />
     ));
   }
@@ -63,6 +60,72 @@ function Quizes() {
 }
 
 export default Quizes;
+
+// import React, { useCallback, useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { quizes } from '../../api/quizes/quizes';
+// import { CardContainer } from './styled';
+// import QuizCard from '../../components/Cards/QuizCard';
+// import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+// import styles from './Quizes.module.css';
+
+// function Quizes() {
+//   const [quizzes, setQuizzes] = useState([]);
+//   const [error, setError] = useState('');
+//   const [loading, setLoading] = useState(true);
+//   const { searchQuery } = useParams();
+
+//   const fetchQuizList = useCallback(async () => {
+//     try {
+//       const response = await quizes.get();
+//       setQuizzes(response);
+//       setLoading(false);
+//     } catch (err) {
+//       console.log(err);
+//       setError(err.message || 'An error occurred while fetching quizzes.');
+//       setLoading(false);
+//     }
+//   }, []);
+
+//   useEffect(() => {
+//     fetchQuizList();
+//   }, [fetchQuizList]);
+
+//   const isSearchQueryValid = searchQuery && searchQuery.trim() !== '';
+
+//   let filteredQuizzes = [];
+
+//   if (!loading && Array.isArray(quizzes)) {
+//     try {
+//       filteredQuizzes = isSearchQueryValid
+//         ? quizzes.filter((quiz) => quiz.quiz.toLowerCase().includes(searchQuery.toLowerCase()))
+//         : quizzes;
+//     } catch (filterError) {
+//       console.error('Error while filtering quizzes:', filterError);
+//     }
+//   }
+
+//   let contentToRender;
+
+//   if (loading) {
+//     contentToRender = <LoadingSpinner />;
+//   } else if (filteredQuizzes.length === 0 && isSearchQueryValid) {
+//     contentToRender = <p className={styles['message-card']}>
+//       No matching elements found for &quot;{searchQuery}&quot;</p>;
+//   } else {
+//     contentToRender = filteredQuizzes.map((quiz) => (
+//       <QuizCard key={quiz.id} quiz={quiz} />
+//     ));
+//   }
+
+//   if (error) {
+//     contentToRender = <p>{error}</p>;
+//   }
+
+//   return <CardContainer>{contentToRender}</CardContainer>;
+// }
+
+// export default Quizes;
 
 // import React, { useCallback, useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';

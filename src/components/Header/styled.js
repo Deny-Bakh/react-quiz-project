@@ -102,7 +102,7 @@ export const SearchBarContainer = styled.div`
   margin-left: auto;
 `;
 
-export const SearchInput = styled.input`
+export const SearchBar = styled.input`
   font-family: 'Ringbearer';
   padding: 5px;
   border: 1px solid #ccc;
@@ -110,12 +110,12 @@ export const SearchInput = styled.input`
   margin-right: 5px;
 `;
 
-export const SearchButton = styled.button`
-  background-color: #000000;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  font-family: 'Ringbearer';
-`;
+// export const SearchButton = styled.button`
+//   background-color: #000000;
+//   color: #fff;
+//   border: none;
+//   border-radius: 5px;
+//   padding: 10px;
+//   cursor: pointer;
+//   font-family: 'Ringbearer';
+// `;
