@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DEFAULT_QUIZ_DURATION } from '../../store/quiz/constants';
 import styles from './QuizResultCard.module.css';
 
@@ -19,6 +19,12 @@ function QuizResultCard() {
     const seconds = completionTimeInSeconds % 60;
 
     return `${minutes} min ${seconds} sec`;
+  };
+
+  const navigate = useNavigate();
+
+  window.onpopstate = () => {
+    navigate('/');
   };
 
   return (

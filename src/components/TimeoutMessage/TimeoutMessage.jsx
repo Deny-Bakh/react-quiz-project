@@ -15,6 +15,10 @@ function TimeoutMessage() {
     navigate('/');
   };
 
+  window.onpopstate = () => {
+    navigate('/');
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
