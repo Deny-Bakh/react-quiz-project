@@ -1,12 +1,13 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { DEFAULT_QUIZ_DURATION } from '../../store/quiz/constants';
 import styles from './QuizResultCard.module.css';
 
 function QuizResultCard() {
-  const { state } = useLocation();
   const {
-    correctAnswers, totalQuestions, quizStartTime, timeLeft, DEFAULT_QUIZ_DURATION,
-  } = state || {};
+    correctAnswers, currentQuestionIndex, quizStartTime, timeLeft,
+  } = useSelector((state) => state.quiz);
 
   const calculateQuizCompletionTime = (quizStartTime, timeLeft) => {
     if (!quizStartTime || timeLeft === undefined) return '';
@@ -26,7 +27,7 @@ function QuizResultCard() {
         <div className={styles.wrapper}>
             <h2 className={styles.card_name}>Quiz Completed</h2>
             <p className={styles.card_text}>
-                You answered {correctAnswers} out of {totalQuestions} questions correctly.
+                You answered {correctAnswers} out of {currentQuestionIndex} questions correctly.
             </p>
             <p className={styles.card_text}>
                 Quiz completed in {calculateQuizCompletionTime(quizStartTime, timeLeft)}

@@ -8,6 +8,7 @@ import QuizCard from '../../components/Cards/QuizCard';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './Quizes.module.css';
 import thunks from '../../store/quizes/thunks';
+import { quizActions } from '../../store/quiz';
 
 function Quizes() {
   const { quizes: reduxQuizes, filteredQuizes, filter } = useSelector((state) => state.quizesReducer);
@@ -31,8 +32,9 @@ function Quizes() {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(quizActions.resetQuizState());
     fetchQuizList();
-  }, [fetchQuizList]);
+  }, [fetchQuizList, dispatch]);
 
   const isSearchQueryValid = searchQuery && searchQuery.trim() !== '';
 

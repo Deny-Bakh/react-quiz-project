@@ -221,7 +221,6 @@ function QuizPage() {
     if (currentQuestionIndex < questions.length - 1) {
       dispatch(quizActions.updateCurrentQuestion(currentQuestionIndex + 1));
     } else {
-      dispatch(quizActions.resetQuizState());
       navigate(`/quiz-page/${quizName}/quiz-result`, {
         // state: {
         //   correctAnswers,
@@ -244,7 +243,6 @@ function QuizPage() {
         dispatch(quizActions.updateTimeLeft(timeLeft - 1));
       } else {
         // clearInterval(timer);
-        dispatch(quizActions.resetQuizState());
         navigate(`/quiz-page/${quizName}/timeout-message`);
       }
     }, 1000);
