@@ -153,9 +153,7 @@ import * as actions from './actions';
 
 export const fetchChosenQuiz = (quizName) => async (dispatch) => {
   try {
-    console.log('Fetching quiz:', quizName);
     const response = await quizApi.get(quizName);
-    console.log('API Response:', response);
 
     const filteredQuestions = response.filter(
       (question) => question.chozenQuiz === quizName,

@@ -93,10 +93,15 @@ export const updateTimeLeft = (time) => ({
   payload: time,
 });
 
+export const resetQuizState = () => ({
+  type: types.RESET_STATE,
+});
+
 export const quizActions = {
   fetchQuizSuccess,
   fetchQuizFailure,
   updateCurrentQuestion,
   updateCorrectAnswers,
   updateTimeLeft,
+  resetQuizState,
 };

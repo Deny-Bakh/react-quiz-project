@@ -389,9 +389,9 @@ const quizSlice = createSlice({
       })
       .addCase(types.UPDATE_TIME_LEFT, (state, action) => {
         state.timeLeft = action.payload;
-      });
+      })
+      .addCase(types.RESET_STATE, () => initialState);
   },
 });
 
 export const { reducer: quizReducer } = quizSlice;
-export const quizActions = quizSlice.actions;

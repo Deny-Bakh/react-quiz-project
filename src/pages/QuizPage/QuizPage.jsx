@@ -192,9 +192,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { fetchChosenQuiz } from '../../store/quiz/thunks';
 import { quizActions } from '../../store/quiz';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import QuestionCard from '../../components/QuestionCard/QuestionCard'; // Import your QuestionCard component
+import QuestionCard from '../../components/QuestionCard/QuestionCard';
 
-const DEFAULT_QUIZ_DURATION = 180;
+// const DEFAULT_QUIZ_DURATION = 180;
 
 function QuizPage() {
   const {
@@ -203,11 +203,9 @@ function QuizPage() {
     currentQuestionIndex,
     correctAnswers,
     timeLeft,
-    quizStartTime,
+    // quizStartTime,
     isLoadingQuestions,
   } = useSelector((state) => state.quiz);
-
-  console.log('QuizPage Rendered. Questions:', questions);
 
   const dispatch = useDispatch();
   const { quizName } = useParams();
@@ -223,20 +221,20 @@ function QuizPage() {
     if (currentQuestionIndex < questions.length - 1) {
       dispatch(quizActions.updateCurrentQuestion(currentQuestionIndex + 1));
     } else {
+      dispatch(quizActions.resetQuizState());
       navigate(`/quiz-page/${quizName}/quiz-result`, {
-        state: {
-          correctAnswers,
-          totalQuestions: questions.length,
-          quizStartTime,
-          timeLeft,
-          DEFAULT_QUIZ_DURATION,
-        },
+        // state: {
+        //   correctAnswers,
+        //   totalQuestions: questions.length,
+        //   quizStartTime,
+        //   timeLeft,
+        //   DEFAULT_QUIZ_DURATION,
+        // },
       });
     }
   };
 
   useEffect(() => {
-    console.log('Fetching quiz data...');
     dispatch(fetchChosenQuiz(quizName));
   }, [dispatch, quizName]);
 
@@ -245,7 +243,8 @@ function QuizPage() {
       if (timeLeft > 0) {
         dispatch(quizActions.updateTimeLeft(timeLeft - 1));
       } else {
-        clearInterval(timer);
+        // clearInterval(timer);
+        dispatch(quizActions.resetQuizState());
         navigate(`/quiz-page/${quizName}/timeout-message`);
       }
     }, 1000);

@@ -9,8 +9,8 @@
 
 // src/store/quiz/index.js
 
-import { quizReducer } from './reducer'; // Import the reducer
-import { quizActions } from './actions'; // Import the actions
+import { quizReducer } from './reducer';
+import { quizActions } from './actions';
 
 export { quizActions }; // Export the actions
 export { fetchChosenQuiz } from './thunks'; // Export the thunks
