@@ -2,7 +2,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { SEARCH_QUIZZES } from './constants';
 import actions from './actions';
-import thunks from './thunks';
 
 const initialState = {
   quizes: [],
@@ -22,7 +21,7 @@ export const quizesReducer = createSlice({
         return quizIntial.indexOf(payload.toLowerCase()) !== -1;
       });
     });
-    builder.addCase(thunks.fetchQuizes.fulfilled, (state, { payload }) => {
+    builder.addCase(actions.getAction, (state, { payload }) => {
       state.quizes = payload;
     });
   },
