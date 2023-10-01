@@ -42,19 +42,20 @@ function QuizPage() {
   }, [dispatch, quizName]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (timeLeft > 0) {
-        dispatch(quizActions.updateTimeLeft(timeLeft - 1));
-      } else {
-        // clearInterval(timer);
-        navigate(`/quiz-page/${quizName}/timeout-message`);
-      }
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [timeLeft, dispatch, navigate, quizName]);
+    if (!isLoadingQuestions && !error) {
+      const timer = setInterval(() => {
+        if (timeLeft > 0) {
+          dispatch(quizActions.updateTimeLeft(timeLeft - 1));
+        } else {
+          clearInterval(timer);
+          navigate(`/quiz-page/${quizName}/timeout-message`);
+        }
+      }, 1000);
+      return () => {
+        clearInterval(timer);
+      };
+    }
+  }, [isLoadingQuestions, timeLeft, dispatch, navigate, quizName, error]);
 
   if (error) return <p>{error}</p>;
 
