@@ -16,7 +16,7 @@ export default function QuizCard({ quiz }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleShowMore = () => {
+  const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
@@ -40,7 +40,7 @@ export default function QuizCard({ quiz }) {
           <Button type="button" onClick={handleStartQuiz}>
             Start Quiz
           </Button>
-          <Button type="button" onClick={handleShowMore}>
+          <Button type="button" onClick={handleOpenModal}>
             Show More
           </Button>
         </Flex>

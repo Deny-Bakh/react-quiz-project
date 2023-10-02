@@ -19,8 +19,8 @@ function QuestionCard({
             <li
               key={optionIndex}
               onClick={() => {
-                onAnswerSelected(option);
                 onNextQuestion();
+                onAnswerSelected(option);
               }}
               className={styles.option}
             >
