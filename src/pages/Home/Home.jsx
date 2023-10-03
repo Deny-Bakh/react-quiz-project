@@ -7,7 +7,7 @@ function Home() {
     <div className={styles.container}>
       <div className={styles.cardContainer}>
         <HomeCard title="Select Quiz" to="/select" />
-        <HomeCard title="Create Quiz" />
+        <HomeCard title="Create Quiz" to="/create-quiz" />
       </div>
     </div>
   );

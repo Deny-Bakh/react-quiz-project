@@ -30,7 +30,7 @@ function Header() {
           <NavbarLinkContainer>
             <NavbarLink to="/"> Home</NavbarLink>
             <NavbarLink to="/select"> Select Quiz</NavbarLink>
-            <NavbarLink to="/create"> Create Quiz</NavbarLink>
+            <NavbarLink to="/create-quiz"> Create Quiz</NavbarLink>
             <NavbarLink to="/favorite"> Favorite</NavbarLink>
             <OpenLinksButton onClick={toggleNavbar}>
               {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
@@ -51,7 +51,7 @@ function Header() {
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/"> Home</NavbarLinkExtended>
           <NavbarLinkExtended to="/select"> Select Quiz</NavbarLinkExtended>
-          <NavbarLinkExtended to="/create"> Create Quiz</NavbarLinkExtended>
+          <NavbarLinkExtended to="/create-quiz"> Create Quiz</NavbarLinkExtended>
           <NavbarLinkExtended to="/favorite"> Favorite</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
