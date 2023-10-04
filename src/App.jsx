@@ -88,6 +88,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import NotFound from './components/NotFound/NotFound';
 import QuizResultCard from './components/QuizResultCard/QuizResultCard';
 import TimeoutMessage from './components/TimeoutMessage/TimeoutMessage';
+import QuizCreationPage from './pages/CreateQuiz/QuizCreationPage';
+import QuizSuccessCard from './components/QuizSuccessCard/QuizSuccessCard';
 
 function App() {
   return (
@@ -96,12 +98,14 @@ function App() {
           <Route path="/*" element={<NotFound />} />
           <Route path="quiz/:searchQuery?" element={<Quizes />} />
           <Route path="/favorite" element={<>Buy</>} />
-          <Route path="/create" element={<>Sell</>} />
+          <Route path="/create" element={<QuizCreationPage />} />
+          <Route path="/quiz-created" element={<QuizSuccessCard />} />
           <Route path="select" element={<Main />} />
           <Route path="/quiz-page/:quizName" element={<QuizPage />} />
           <Route path="/quiz-page/:quizName/quiz-result" element={<QuizResultCard />} />
           <Route path="/quiz-page/:quizName/timeout-message" element={<TimeoutMessage />} />
           <Route path="/timeout" element={<TimeoutMessage />} />
+          QuizSuccessCard
           <Route path="/" element={<Home />} />
         </Route>
       </Routes>

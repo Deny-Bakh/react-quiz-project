@@ -6,6 +6,11 @@ const quizApi = {
     .catch((err) => {
       throw new Error(err);
     }),
+  post: (formData) => axios.post('/your-quiz', formData)
+    .then(({ data }) => data)
+    .catch((err) => {
+      throw new Error(err);
+    }),
 };
 
 export { quizApi };
