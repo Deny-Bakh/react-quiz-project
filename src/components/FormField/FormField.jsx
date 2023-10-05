@@ -21,7 +21,7 @@ function FormField({
             <input type="text" id={name} {...field} />
           )
         )}
-        rules={rules} // Apply validation rules
+        rules={rules}
       />
       {errors[name] && <p>{errors[name].message}</p>}
     </div>
