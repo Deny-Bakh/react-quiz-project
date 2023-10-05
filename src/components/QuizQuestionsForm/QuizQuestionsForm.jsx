@@ -15,8 +15,6 @@ function QuizQuestionsForm() {
   } = QuizQuestionsFormValidation();
 
   function FormField({ name, label }) {
-    const isTextArea = name === 'description';
-
     return (
       <div className={styles.input_container}>
         <label htmlFor={name}>{label}</label>
@@ -24,11 +22,9 @@ function QuizQuestionsForm() {
           name={name}
           control={control}
           defaultValue=""
-          render={({ field }) => (isTextArea ? (
-            <textarea id={name} {...field} />
-          ) : (
+          render={({ field }) => (
             <input type="text" id={name} {...field} />
-          ))}
+          )}
           rules={validationRules[name]}
         />
         {errors[name] && <p>{errors[name].message}</p>}
