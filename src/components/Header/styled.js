@@ -7,9 +7,13 @@ export const NavbarContainer = styled.nav`
   background: linear-gradient(to bottom, rgba(139, 69, 19, 1), transparent);
   display: flex;
   flex-direction: column;
+  position: ${(props) => (props.extendNavbar ? 'fixed' : 'relative')};
+  z-index: 999;
 
   @media (min-width: 700px) {
     height: 80px;
+    flex-direction: row;
+    position: relative;
   }
 `;
 
@@ -109,13 +113,3 @@ export const SearchBar = styled.input`
   border-radius: 5px;
   margin-right: 5px;
 `;
-
-// export const SearchButton = styled.button`
-//   background-color: #000000;
-//   color: #fff;
-//   border: none;
-//   border-radius: 5px;
-//   padding: 10px;
-//   cursor: pointer;
-//   font-family: 'Ringbearer';
-// `;

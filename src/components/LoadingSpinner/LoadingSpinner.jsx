@@ -8,5 +8,3 @@ export default function LoadingSpinner() {
     </SpinnerContainer>
   );
 }
-
-// export default LoadingSpinner;

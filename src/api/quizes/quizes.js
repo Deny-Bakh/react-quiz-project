@@ -1,42 +1,3 @@
-// import axios from '../service';
-
-// const quizes = {
-//   get: () => axios.get('/quiz')
-//     .then(({ data }) => data)
-//     .catch((err) => {
-//       throw new Error(err);
-//     }),
-//   post: (params) => axios.post('/quiz', params)
-//     .then(({ data }) => data)
-//     .catch((err) => {
-//       throw new Error(err);
-//     }),
-// };
-
-// export { quizes };
-
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-// export const quizes = createApi({
-//   reducerPath: 'quizes',
-//   baseQuery: fetchBaseQuery({ baseUrl: 'https://64f4523e932537f4051a408a.mockapi.io/api/v1/' }),
-//   endpoints: (builder) => ({
-//     getQuizesByName: builder.query({
-//       query: (quiz) => quiz,
-//     }),
-//     addQuiz: builder.mutation({
-//       // Modify the mutation function to accept a `Partial<Quiz>` arg and return a `Quiz`
-//       query: (newQuiz) => ({
-//         url: 'quiz', // You don't need to specify the full URL here, just the path
-//         method: 'POST',
-//         body: newQuiz,
-//       }),
-//     }),
-//   }),
-// });
-
-// export const { useGetQuizesByNameQuery } = quizes;
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const quizes = createApi({
@@ -44,9 +5,16 @@ export const quizes = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://64f4523e932537f4051a408a.mockapi.io/api/v1/',
   }),
+  tagTypes: ['Quiz'],
   endpoints: (builder) => ({
-    getQuizesByName: builder.query({
-      query: (quiz) => quiz,
+    getQuizes: builder.query({
+      query: () => ({
+        url: 'quiz',
+        method: 'GET',
+      }),
+      providesTags: (result) => (result
+        ? [...result.map(({ id }) => ({ type: 'Quiz', id })), 'Quiz']
+        : ['Quiz']),
     }),
     addQuiz: builder.mutation({
       query: (newQuiz) => ({
@@ -54,8 +22,17 @@ export const quizes = createApi({
         method: 'POST',
         body: newQuiz,
       }),
+      invalidatesTags: ['Quiz'],
+    }),
+    toggleFavorite: builder.mutation({
+      query: ({ id, favorite }) => ({
+        url: `quiz/${id}`,
+        method: 'PUT',
+        body: { favorite },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: 'Quiz', id: arg.id }],
     }),
   }),
 });
 
-export const { useGetQuizesByNameQuery, useAddQuizMutation } = quizes;
+export const { useGetQuizesQuery, useAddQuizMutation, useToggleFavoriteMutation } = quizes;

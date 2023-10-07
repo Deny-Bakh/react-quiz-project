@@ -49,6 +49,8 @@ export const Description = styled.p`
 `;
 
 export const Button = styled.button`
+  font-family: 'Ringbearer';
+  width: 100px;
   margin-top: 10px;
   padding: 10px 20px;
   font-size: 1rem;
@@ -66,5 +68,5 @@ export const Button = styled.button`
 
 export const Flex = styled.div`
   display: flex;
-  justify-content: space-around;
+  gap: 10px;
 `;
