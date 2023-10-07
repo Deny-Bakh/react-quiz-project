@@ -11,6 +11,7 @@ import {
   Flex,
 } from './styled';
 import QuizModal from '../QuizModal/QuizModal';
+import { useToggleFavoriteMutation } from '../../api/quizes/quizes';
 
 export default function QuizCard({ quiz }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +29,14 @@ export default function QuizCard({ quiz }) {
     navigate(`/quiz-page/${quiz.quizUniqueName}`);
   };
 
+  const [
+    updatePost,
+  ] = useToggleFavoriteMutation();
+
+  const handleToggleFavorite = () => {
+    updatePost({ id: quiz.id, favorite: !quiz.favorite });
+  };
+
   return (
     <CardWrapper>
       <Card style={{ backgroundImage: `url(${quiz.background})` }}>
@@ -40,14 +49,21 @@ export default function QuizCard({ quiz }) {
           <Button type="button" onClick={handleStartQuiz}>
             Start Quiz
           </Button>
+          <Button
+            type="button"
+            onClick={handleToggleFavorite}
+            style={{
+              backgroundColor: quiz.favorite ? 'red' : 'green',
+            }}
+          >
+            {quiz.favorite ? 'Remove Favorite' : 'Add Favorite'}
+          </Button>
           <Button type="button" onClick={handleOpenModal}>
             Show More
           </Button>
         </Flex>
       </Card>
-      {isModalOpen && (
-        <QuizModal quiz={quiz} onClose={handleCloseModal} />
-      )}
+      {isModalOpen && <QuizModal quiz={quiz} onClose={handleCloseModal} />}
     </CardWrapper>
   );
 }

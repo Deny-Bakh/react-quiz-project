@@ -5,7 +5,7 @@ import { CardContainer } from './styled';
 import QuizCard from '../../components/Cards/QuizCard';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './Quizes.module.css';
-import { useGetQuizesByNameQuery } from '../../api/quizes/quizes';
+import { useGetQuizesQuery } from '../../api/quizes/quizes';
 import actions from '../../store/quizes/actions';
 import { quizActions } from '../../store/quiz';
 
@@ -13,7 +13,7 @@ function Quizes() {
   const { quizes: reduxQuizes, filteredQuizes, filter } = useSelector((state) => state.quizesReducer);
   const dispatch = useDispatch();
   const { searchQuery } = useParams();
-  const { data, isLoading, error } = useGetQuizesByNameQuery('quiz');
+  const { data, isLoading, error } = useGetQuizesQuery();
 
   const quizesList = useMemo(() => (filter ? filteredQuizes : reduxQuizes), [reduxQuizes, filter, filteredQuizes]);
 

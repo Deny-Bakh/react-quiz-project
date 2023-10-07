@@ -1,14 +1,15 @@
-import { setupListeners } from '@reduxjs/toolkit/query';
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { quizesReducer } from './quizes';
 import { quizReducer } from './quiz';
 import { quizes } from '../api/quizes/quizes';
+import quizUniqueNameReducer from './quizUniqueName/reducer';
 
 const rootReducer = combineReducers({
   quizesReducer,
   quiz: quizReducer,
   [quizes.reducerPath]: quizes.reducer,
+  quizUniqueName: quizUniqueNameReducer,
 });
 
 const store = configureStore({
@@ -16,7 +17,6 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(quizes.middleware),
 });
 
-setupListeners(store.dispatch);
 export default store;
 
 // import { setupListeners } from '@reduxjs/toolkit/query';
